@@ -35,7 +35,7 @@ async function atualizarUsuario(id, nome, email, telefone) {
     if (resultado.affectedRows === 0) {
         return null;
     }
-    return buscarUsuario(id)
+    return buscarUsuario(id);
 }
 async function excluirUsuario(id) {
     const [resultado] = await pool.query(

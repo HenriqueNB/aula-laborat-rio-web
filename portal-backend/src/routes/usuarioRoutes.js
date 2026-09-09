@@ -22,3 +22,5 @@ router.delete(
     "/usuarios/:id",
     usuarioController.excluirUsuario
 );
+
+module.exports = router;
