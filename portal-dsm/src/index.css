@@ -1,0 +1,296 @@
+/* ==========================================================
+   Portal DSM — estilos globais
+   ========================================================== */
+
+:root {
+  /* Paleta */
+  --color-primary: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-primary-light: #eef2ff;
+  --color-accent: #06b6d4;
+
+  --color-bg: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-text: #1e2233;
+  --color-text-muted: #667085;
+  --color-border: #e4e7ec;
+
+  --color-header-from: #1e1b4b;
+  --color-header-to: #312e81;
+  --color-footer: #14142b;
+
+  /* Tipografia */
+  --font-heading: "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", Arial, sans-serif;
+
+  /* Layout */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.08);
+  --shadow-lg: 0 16px 40px rgba(30, 27, 75, 0.14);
+  --transition: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Foco acessível em qualquer elemento navegável */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Header ---------- */
+header {
+  background: linear-gradient(135deg, var(--color-header-from), var(--color-header-to));
+  color: #ffffff;
+  text-align: center;
+  padding: 3.25rem 1.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(6, 182, 212, 0.25), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(99, 102, 241, 0.35), transparent 50%);
+  pointer-events: none;
+}
+
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+header p {
+  margin: 0;
+  color: #c7d2fe;
+  font-size: 1.05rem;
+  position: relative;
+}
+
+/* ---------- Navbar ---------- */
+nav {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow-sm);
+}
+
+nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+nav a:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+nav a.active {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+nav a.active:hover {
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+/* ---------- Layout base ---------- */
+.container {
+  width: min(1100px, 92%);
+  margin: 2.5rem auto;
+  flex: 1;
+}
+
+.container h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.container > p {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  max-width: 60ch;
+}
+
+/* ---------- Cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 1.75rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  font-size: 1.15rem;
+}
+
+.card p {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 1.75rem;
+  background: var(--color-footer);
+  color: #9ca3af;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  header {
+    padding: 2.5rem 1.25rem 2.25rem;
+  }
+}
+
+/* ==========================================================
+   Quadro de Avisos Animado (Mural)
+   ========================================================== */
+
+   .notice-board-container {
+    /* Use o nome do arquivo da imagem gerada ou o caminho da sua imagem */
+    background-image: url('watermarked_img_2133717016964556870.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 3rem 2rem;
+    border-radius: var(--radius-md);
+    margin-top: 1.75rem;
+    position: relative;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+  }
+  
+  /* Camada escura sobre a imagem para destacar os cards */
+  .notice-board-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 34, 51, 0.6); 
+    z-index: 0;
+  }
+  
+  .animated-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    position: relative;
+    z-index: 1; /* Mantém os cards acima da camada escura */
+  }
+  
+  .animated-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-lg);
+    border-left: 6px solid var(--color-primary);
+    /* Animação infinita de flutuação */
+    animation: floatCard 4s ease-in-out infinite;
+    transition: transform var(--transition);
+  }
+  
+  .animated-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+    color: var(--color-text);
+    font-size: 1.15rem;
+  }
+  
+  .animated-card p {
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+  
+  /* Atrasos diferentes para cada card não flutuar ao mesmo tempo */
+  .animated-card:nth-child(1) { animation-delay: 0s; border-color: #ef4444; }
+  .animated-card:nth-child(2) { animation-delay: 1.2s; border-color: var(--color-accent); }
+  .animated-card:nth-child(3) { animation-delay: 2.4s; border-color: #10b981; }
+  
+  @keyframes floatCard {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @media (max-width: 768px) {
+    .notice-board-container {
+      padding: 2rem 1rem;
+    }
+  }
